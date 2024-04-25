@@ -3,6 +3,7 @@ import { Student } from "../models/student.js";
 import bcrypt from "bcrypt";
 import { sendCookie } from "../utils/feature.js";
 import jwt from "jsonwebtoken";
+import { Notification } from "../models/notification.js";
 
 
 export const register = async (req, res) => {
@@ -140,3 +141,41 @@ export const homepage=async(req,res)=>{
         });
     }
 }
+
+export const notify = async (req, res) => {
+    if (!req.body) {
+      return res.status(400).json({
+        success: false,
+        message: "Request body is missing",
+      });
+    }
+    console.log(req.body);
+  
+    // Destructure properties from req.body
+    const { description, title, isread } = req.body;
+  
+    try {
+      const notifis = await Notification.create({ description, title, isread });
+      res.status(200).json({
+        success: true
+      });
+    } catch (err) {
+      console.log(err.message);
+      res.status(500).json({
+        success: false,
+        message: "Ye aaya Error",
+      });
+    }
+  };
+
+
+  /*
+  {
+  "title":"hiiii",
+  "description":"iit2022073@iiita.ac.in",
+  "isread":"123456"
+}
+  
+  
+  */
+

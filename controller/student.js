@@ -1,9 +1,7 @@
-import { Student} from "../models/student.js";
 import bcrypt from "bcrypt";
-import { sendCookie } from "../utils/feature.js";
 import jwt from "jsonwebtoken";
-import { Image } from "../routes/student.js";
-import fs from 'fs';
+import { Student } from "../models/student.js";
+import { sendCookie } from "../utils/feature.js";
 
 export const register = async (req, res) => {
     const { name, email, password, mobile,enrollment_no,batch } = req.body;
@@ -119,24 +117,4 @@ export const updatemyprofile=async(req,res)=>{
 
 export const homepage=async(req,res)=>{
 
-};
-
-
-export const uploadimg=async(req,res)=>{
-    try {
-        if (!req.file) {
-            return res.status(400).send('No file uploaded.');
-        }
-        
-        const image = new Image({
-            data: fs.readFileSync(req.file.path),
-            contentType: req.file.mimetype,
-            enrollment_no:req.data.enrollment_no,
-        });
-        await image.save();
-        res.status(201).send('Image uploaded successfully!');
-    } catch (error) {
-        console.error(error);
-        res.status(500).send('Internal Server Error');
-    }
 };
