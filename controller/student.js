@@ -38,7 +38,6 @@ export const login = async (req, res, next) => {
         });
     }
     const username = student.name;
-
     bcrypt.compare(password, student.password, (err, isMatch) => {
         if (err) {
             return res.status(500).json({
