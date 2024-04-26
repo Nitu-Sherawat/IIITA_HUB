@@ -17,6 +17,6 @@ const schema2 = new mongoose.Schema({
     },
     photo:{
         type: String,
-    },
+    }
 });
 export const Admin = mongoose.model("admin",schema2);
