@@ -15,5 +15,8 @@ const schema2 = new mongoose.Schema({
     mobile:{
         type: Number,
     },
+    photo:{
+        type: String,
+    },
 });
 export const Admin = mongoose.model("admin",schema2);

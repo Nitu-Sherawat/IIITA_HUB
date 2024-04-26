@@ -7,7 +7,7 @@ import { Notification } from "../models/notification.js";
 
 
 export const register = async (req, res) => {
-    const { name, email, password, mobile} = req.body;
+    const { name, email, password, mobile , photo} = req.body;
     try {
         let admin = await Admin.findOne({ email });
 
@@ -18,7 +18,7 @@ export const register = async (req, res) => {
             });
         }
         const hashedPassword = await bcrypt.hash(password, 10);
-        admin = await Admin.create({ name, email, password: hashedPassword, mobile });
+        admin = await Admin.create({ name, email, password: hashedPassword, mobile , photo});
 
         sendCookie(admin, res, "Registered Successfully", 201);
     } catch (error) {

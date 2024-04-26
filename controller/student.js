@@ -4,7 +4,7 @@ import { Student } from "../models/student.js";
 import { sendCookie } from "../utils/feature.js";
 
 export const register = async (req, res) => {
-    const { name, email, password, mobile,isAlumni,batchYear, degree ,resumeLink} = req.body;
+    const { name, email, password, mobile,isAlumni,batchYear, degree ,resumeLink, photo} = req.body;
 
     try {
         let student = await Student.findOne({ email });
@@ -16,7 +16,7 @@ export const register = async (req, res) => {
             });
         }
         const hashedPassword = await bcrypt.hash(password, 10);
-        student = await Student.create({ name, email, password: hashedPassword, mobile,isAlumni,batchYear,degree,resumeLink });
+        student = await Student.create({ name, email, password: hashedPassword, mobile,isAlumni,batchYear,degree,resumeLink, photo });
 
         sendCookie(student, res, "Registered Successfully", 201);
     } catch (error) {
