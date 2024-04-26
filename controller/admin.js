@@ -167,3 +167,10 @@ export const notify = async (req, res) => {
       });
     }
   };
+
+
+  /*{
+  "title":"hiiii",
+  "description":"iit2022073@iiita.ac.in",
+  "isread":"123456"
+} */
