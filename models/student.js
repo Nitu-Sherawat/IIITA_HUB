@@ -10,7 +10,6 @@ const schema1 = new mongoose.Schema({
     },
     password: {
         type: String,
-        select: false,
     },
     isAlumni:{
         type: String,
@@ -22,7 +21,7 @@ const schema1 = new mongoose.Schema({
         type: String,
     },
     resumeLink:{
-        type: Number,
+        type: String,
     },
     mobile:{
         type: Number,
