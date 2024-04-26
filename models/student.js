@@ -12,10 +12,16 @@ const schema1 = new mongoose.Schema({
         type: String,
         select: false,
     },
-    enrollment_no:{
+    isAlumni:{
         type: String,
     },
-    batch:{
+    batchYear:{
+        type: Number,
+    },
+    degree:{
+        type: String,
+    },
+    resumeLink:{
         type: Number,
     },
     mobile:{
