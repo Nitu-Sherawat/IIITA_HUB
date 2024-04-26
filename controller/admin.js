@@ -64,12 +64,6 @@ export const login = async (req, res, next) => {
 export const getmyprofile = async (req,res)=>{
     const { token }=req.cookies;
 
-    if(!token)
-    return res.status(404).json({
-        success: false,
-        message:"Login First",
-    });
-
     const decoded= jwt.verify(token,process.env.JWT_SECRET);
     const admin= await Admin.findById(decoded._id);
 
@@ -163,19 +157,7 @@ export const notify = async (req, res) => {
       console.log(err.message);
       res.status(500).json({
         success: false,
-        message: "Ye aaya Error",
+        message: "Error",
       });
     }
   };
-
-
-  /*
-  {
-  "title":"hiiii",
-  "description":"iit2022073@iiita.ac.in",
-  "isread":"123456"
-}
-  
-  
-  */
-

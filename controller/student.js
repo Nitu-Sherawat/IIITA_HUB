@@ -115,6 +115,18 @@ export const updatemyprofile=async(req,res)=>{
     }
 };
 
-export const homepage=async(req,res)=>{
+export const notification = async (req,res)=>{
+    if(!token)
+    return res.status(404).json({
+        success: false,
+        message:"Login First",
+    });
 
+    const decoded= jwt.verify(token,process.env.JWT_SECRET);
+    const student= await Student.findById(decoded._id);
+
+    res.status(200).json({
+        success:true,
+        student,
+    })
 };
