@@ -137,3 +137,16 @@ export const getAlumni = async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 };
+export const getProfileById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const student = await Student.findById(id);
+    if (!student) {
+      return res.status(404).json({ message: 'Student not found' });
+    }
+    res.json(student);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
