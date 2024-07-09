@@ -131,7 +131,7 @@ export const notification = async (req,res)=>{
 };
 export const getAlumni = async (req, res) => {
     try {
-        const alumni = await Student.find({ isAlumni: true }).select('name');
+        const alumni = await Student.find({ isAlumni: true });
         res.json(alumni);
     } catch (err) {
         res.status(500).json({ error: err.message });
