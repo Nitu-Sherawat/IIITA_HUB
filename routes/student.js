@@ -1,5 +1,5 @@
 import express from "express";
-import { getmyprofile, login, logout, register, updatemyprofile, notification, getAlumni } from "../controller/student.js";
+import { getmyprofile, login, logout, register, updatemyprofile, notification, getAlumni, getProfileById } from "../controller/student.js";
 
 
 
@@ -14,6 +14,7 @@ router.get('/me',getmyprofile);
 router.get('/notification', notification);
 router.post('/update',updatemyprofile);
 router.get('/alumni', getAlumni); 
+router.get('/profile/:id', getProfileById);
 
 router.get('/hello',(req,res)=>{
     res.send("Hello  World");
