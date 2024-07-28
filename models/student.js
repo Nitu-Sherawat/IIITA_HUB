@@ -26,8 +26,5 @@ const schema1 = new mongoose.Schema({
     mobile:{
         type: Number,
     },
-    photo:{
-        type: String,
-    },
 });
 export const Student = mongoose.model("student",schema1);
